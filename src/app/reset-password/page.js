@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { Input } from "../../components/Input";
@@ -9,7 +9,7 @@ import { Spinner } from "../../components/Spinner";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { resetPassword } from "../../actions/passwordReset";
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
@@ -134,5 +134,19 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className={styles.resetContainer}>
+          <Spinner />
+        </div>
+      }
+    >
+      <ResetPasswordForm />
+    </Suspense>
   );
 }
