@@ -6,6 +6,8 @@ import { UserBio } from "../../components/UserBio";
 import Link from "next/link";
 import styles from "./page.module.css";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProfilePage() {
   try {
     const supabase = await createClient();
