@@ -1,4 +1,4 @@
-use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -8,11 +8,11 @@ import { Button } from "../../components/Button";
 import { Spinner } from "../../components/Spinner";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { resetPassword } from "../../actions/passwordReset";
-import { createClient } from '../../utils/supabase/client'
+import { createClient } from "../../utils/supabase/client";
 
 export default function ResetPasswordPage() {
-  const supabase = createClient()
-  const router = useRouter()
+  const supabase = createClient();
+  const router = useRouter();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -43,12 +43,12 @@ export default function ResetPasswordPage() {
     setSuccessMessage("");
 
     try {
-      const { error } = await supabase.auth.updateUser({ password })
+      const { error } = await supabase.auth.updateUser({ password });
 
       if (error) {
-        setErrorMessage("Token inválido, expirado ou já usado.")
+        setErrorMessage("Token inválido, expirado ou já usado.");
       } else {
-        setSuccessMessage("Senha alterada com sucesso!")
+        setSuccessMessage("Senha alterada com sucesso!");
         // Redirecionar após 2 segundos
         setTimeout(() => {
           router.push("/login");
