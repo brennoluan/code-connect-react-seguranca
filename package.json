@@ -31,6 +31,6 @@
     "@eslint/eslintrc": "^3",
     "dotenv": "^17.2.1",
     "eslint": "^9",
-    "eslint-config-next": "15.5.19"
+    "eslint-config-next": "16.2.7"
   }
 }
